@@ -1,0 +1,34 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>OptimusClients</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-searchbar [(ngModel)]="searchQuery" (change)="onInput($event)" autocorrect="off"></ion-searchbar>
+	<div *ngFor="let clients of completeArray ">
+		<ion-card (click)="moveToClient(clients.$key)">
+			<ion-card-content>
+				<ion-card-title>
+					{{clients.PARTENER}}
+				</ion-card-title>
+				<ion-grid>
+					<ion-row>
+						<ion-col col-4>
+							<p>STATUS: {{clients.STATUS}}</p>
+						</ion-col>
+						<ion-col col-4>
+							<p>TERMEN PLATA: {{clients.TERMEN_PL}}</p>
+						</ion-col>
+						<ion-col col-4>
+							<p>MONEDA: {{clients.MONEDA}}</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-card-content>
+		</ion-card>
+	</div>
+</ion-content>

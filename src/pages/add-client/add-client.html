@@ -1,0 +1,46 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>OptimusClients</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<form [formGroup]="addClientForm" (ngSubmit)="addClient()">
+		<ion-item>
+			<ion-label>Bilet la ordin</ion-label>
+			<ion-input type="text" formControlName="BILET_LA_ORDIN"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Contract</ion-label>
+			<ion-input type="text" formControlName="CONTRACT"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Moneda</ion-label>
+			<ion-input type="text" formControlName="MONEDA"></ion-input>
+		  </ion-item>
+		  <ion-item>
+			<ion-label>Observatii</ion-label>
+			<ion-input type="text" formControlName="OBSERVATII"></ion-input>
+		  </ion-item>
+		  <ion-item>
+			<ion-label>Partener</ion-label>
+			<ion-input type="text" formControlName="PARTENER"></ion-input>
+		  </ion-item>
+		  <ion-item>
+			<ion-label>Pret</ion-label>
+			<ion-input type="text" formControlName="PRET"></ion-input>
+		  </ion-item>
+		  <ion-item>
+			<ion-label>Status</ion-label>
+			<ion-input type="text" formControlName="STATUS"></ion-input>
+		  </ion-item>
+		  <ion-item>
+			<ion-label>Termen de plata</ion-label>
+			<ion-input type="text" formControlName="TERMEN_PL"></ion-input>
+		  </ion-item>
+		<button ion-button type="submit" [disabled]="!addClientForm.valid">Adauga</button>
+	</form>
+</ion-content>
