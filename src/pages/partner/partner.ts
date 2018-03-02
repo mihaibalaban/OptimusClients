@@ -132,7 +132,7 @@ export class PartnerPage {
               CONTRACT: data.CONTRACT,
               BILET_LA_ORDIN: data.BILET_LA_ORDIN,
             }).then(()=>{
-              this.navCtrl.push(HomePage);
+              this.navCtrl.setRoot(HomePage);
               this.presentToast()
             }).catch(()=>{
               this.presentToastError()

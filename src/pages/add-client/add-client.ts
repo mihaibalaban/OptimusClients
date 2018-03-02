@@ -28,7 +28,6 @@ export class AddClientPage {
     }
 
     addClient() {
-        console.log(this.addClientForm.value)
         this.clients.push({
             BILET_LA_ORDIN: this.addClientForm.value.BILET_LA_ORDIN ,
             CONTRACT: this.addClientForm.value.CONTRACT ,
@@ -39,7 +38,7 @@ export class AddClientPage {
             STATUS: this.addClientForm.value.STATUS ,
             TERMEN_PL: this.addClientForm.value.TERMEN_PL ,
         })
-        this.navCtrl.push(HomePage)
+        this.navCtrl.setRoot(HomePage);
         this.presentToast()
     }
 

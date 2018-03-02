@@ -2,12 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AsyncPipe } from '@angular/common';
+import { Http, HttpModule, Headers } from '@angular/http';
 ////////////////////////////////////////////////////Pages
 import { MyApp } from './app.component';
+import { VoucherPage } from '../pages/voucher/voucher';
+import { VoucherFormPage } from '../pages/voucher-form/voucher-form';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { PartnerPage } from '../pages/partner/partner';
-import {AddClientPage} from '../pages/add-client/add-client';
+import { AddClientPage } from '../pages/add-client/add-client';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,12 +31,14 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
+    VoucherPage,
     PartnerPage,
     AddClientPage,
+    VoucherFormPage,
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
   ],
@@ -42,9 +46,10 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    VoucherPage,
     PartnerPage,
     AddClientPage,
+    VoucherFormPage,
   ],
   providers: [
     StatusBar,

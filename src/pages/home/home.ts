@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, ActionSheetController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { CentralBrainProvider } from '../../providers/central-brain/central-brain';
-import { PartnerPage } from '../partner/partner'; 
+import { PartnerPage } from '../partner/partner';
 
 
 @Component({
@@ -31,6 +31,17 @@ export class HomePage {
     })
   }
 
-  
+  testPOST() {
+    this.dataService.getSpecificVoucher(2).then(data => {
+      console.log(data)
+    })
+  }
+
+  testGET() {
+    this.dataService.getAllVouchers().then(data => {
+      console.log(data)
+    })
+    
+  }
 
 }

@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Formular Voucher</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+        <form [formGroup]="voucherForm" (ngSubmit)="submit()">
+            <ion-item>
+                <ion-label floating>Pret</ion-label>
+                <ion-input type="text" formControlName="price"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Ruta</ion-label>
+                <ion-input type="text" formControlName="route"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Data</ion-label>
+                <ion-input type="date" formControlName="date"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>baf</ion-label>
+                <ion-input type="text" formControlName="baf"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Invoice</ion-label>
+                <ion-input type="text" formControlName="invoice"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Reference</ion-label>
+                <ion-input type="text" formControlName="reference"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>truck</ion-label>
+                <ion-input type="text" formControlName="truck"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>truck_length</ion-label>
+                <ion-input type="text" formControlName="truck_length"></ion-input>
+            </ion-item>
+            <button ion-button color="light" type="submit" block>Submit Voucher</button>
+        </form>
+
+</ion-content>
