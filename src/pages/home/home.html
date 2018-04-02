@@ -7,10 +7,8 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content style=" background: url(../../assets/imgs/homePage.jpg);" padding>
 	<ion-searchbar [(ngModel)]="searchQuery" (change)="onInput($event)" autocorrect="off"></ion-searchbar>
-	<button ion-button color="light" (click)="testPOST()">testPOST</button>
-	<button ion-button color="light" (click)="testGET()">testGET</button>
 	
 	<div *ngFor="let clients of completeArray ">
 		<ion-card (click)="moveToClient(clients.$key)">

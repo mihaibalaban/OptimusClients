@@ -10,6 +10,7 @@ import { CentralBrainProvider } from '../../providers/central-brain/central-brai
 export class VoucherFormPage {
     private voucherForm: FormGroup;
     voucher;
+    isUsed;
 
     constructor(public toastCtrl: ToastController,
         public navCtrl: NavController,
@@ -18,6 +19,13 @@ export class VoucherFormPage {
         public dataService: CentralBrainProvider
     ) {
         this.voucher = navParams.get('voucher');
+
+        if (this.voucher.date != null) {
+            this.isUsed = true        
+        }else{
+            this.isUsed = false;            
+        }
+
         this.voucherForm = this.formBuilder.group({
             price: [''],
             route: [''],
@@ -29,22 +37,21 @@ export class VoucherFormPage {
             truck_length: [''],
         });
 
-        if(this.voucher.date != null){
+        if (this.voucher.date != null) {
             this.voucherForm.controls['price'].setValue(this.voucher.price);
-            this.voucherForm.controls['route'].setValue( this.voucher.route);
-            this.voucherForm.controls['date'].setValue( this.voucher.date);
-            this.voucherForm.controls['baf'].setValue( this.voucher.baf);            
-            this.voucherForm.controls['invoice'].setValue( this.voucher.invoice);
-            this.voucherForm.controls['reference'].setValue( this.voucher.reference);
-            this.voucherForm.controls['truck'].setValue( this.voucher.truck);
-            this.voucherForm.controls['truck_length'].setValue( this.voucher.truck_length);   
+            this.voucherForm.controls['route'].setValue(this.voucher.route);
+            this.voucherForm.controls['date'].setValue(this.voucher.date);
+            this.voucherForm.controls['baf'].setValue(this.voucher.baf);
+            this.voucherForm.controls['invoice'].setValue(this.voucher.invoice);
+            this.voucherForm.controls['reference'].setValue(this.voucher.reference);
+            this.voucherForm.controls['truck'].setValue(this.voucher.truck);
+            this.voucherForm.controls['truck_length'].setValue(this.voucher.truck_length);
         }
     }
 
     submit() {
         this.voucherForm.value.voucher_id = this.voucher.id;
         this.dataService.updateVoucher(this.voucherForm.value).then(data => {
-            console.log(data);
             this.presentToast();
             this.navCtrl.pop();
         })
@@ -52,16 +59,16 @@ export class VoucherFormPage {
 
     presentToast() {
         let message;
-        if(this.voucher.date != null){
+        if (this.voucher.date != null) {
             message = "Voucher modificat"
-        }else{
+        } else {
             message = "Voucher utilizat cu succes"
         }
         let toast = this.toastCtrl.create({
-          message: message,
-          duration: 2000
+            message: message,
+            duration: 4000
         });
         toast.present();
-      }
+    }
 
 }

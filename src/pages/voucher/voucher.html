@@ -7,21 +7,63 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content style="background-image:url(../assets/imgs/voucher.jpg)" padding>
 
-    <button *ngIf="!voucher" ion-button color="light" (click)="generateVoucher()">Genereaza Voucher</button>
-    <button *ngIf="!voucher" ion-button color="light" (click)="getAllVouchers()">Arata toate voucherele</button>
+    <div *ngIf="showVoucherSearchForm == true">
+        <form [formGroup]="voucherSearchForm" (ngSubmit)="submit()">
+            <ion-item style="display:none">
+                <ion-label floating>Cauta dupa</ion-label>
+                <ion-input disabled="true" formControlName="by" value="" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Adauga {{searchBy}}</ion-label>
+                <ion-input formControlName="value" value="" type="text"></ion-input>
+            </ion-item>
+            <ion-row>
+                <ion-col>
+                    <button ion-button color="primary" type="submit">Cauta</button>
+                </ion-col>
+                <ion-col>
+                    <button (click)="searchVouchers()" ion-button color="secondary" type="button">Schimba atributul</button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </div>
 
-    <ion-card *ngIf="voucher">
-        <ion-card-header (click)="voucherTapped(voucher)">
-            {{voucher.voucher}}
-        </ion-card-header>
-    </ion-card>
+    <div style="text-align:center">
+        <ion-row>
+            <ion-col *ngIf="showVoucherSearchForm != true">
+                <button ion-button color="primary" (click)="searchVouchers()">Cauta</button>
+            </ion-col>
+            <ion-col>
+                <button ion-button color="optimusBlue" (click)="generateVoucher()">Genereaza</button>
+            </ion-col>
+            <ion-col>
+                <button ion-button color="optimusBlue" (click)="getLastVouchers()">Last</button>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <div *ngIf="voucher">
+        <ion-card (click)="voucherTapped(voucher)">
+            <ion-card-header>
+                <h2>Voucher: {{voucher.voucher}}</h2>             
+            </ion-card-header>
+            <ion-card-content *ngIf="voucher.date != null">
+                Voucher folosit
+            </ion-card-content>
+            <ion-card-content *ngIf="voucher.error != null">
+                {{voucher.error}}
+            </ion-card-content>
+        </ion-card>
+    </div>
 
     <div *ngIf="vouchers && vouchers.length > 0">
         <ion-card *ngFor="let oldVoucher of vouchers">
             <ion-card-header (click)="voucherTapped(oldVoucher)">
-                {{oldVoucher.voucher}}
+                <h2>Voucher: {{oldVoucher.voucher}}</h2>
+                <h2>Numar inmatriculare: {{oldVoucher.truck}}</h2>
+                <h2>Referinta: {{oldVoucher.reference}}</h2>           
             </ion-card-header>
             <ion-card-content>
                 <h3 *ngIf="oldVoucher.date">Voucher folosit</h3>

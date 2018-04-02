@@ -1,19 +1,21 @@
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- <ion-split-pane when="(min-width: 475px)"> -->
+  <ion-menu [content]="content">
+    <ion-header style="min-height:200px; background-image: url(../assets/imgs/menuBanner.jpg); background-size: 100%;">
+      <ion-toolbar>
+        <ion-title>Durdu helper</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
+    <ion-content class="menuIonContent" style="background-color:#080226">
+      <ion-list class="menuItems">
+        <button menuClose ion-item class="menuPages" *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+      </ion-list>
+    </ion-content>
 
-</ion-menu>
+  </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav style="max-width: 100%;" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<!-- </ion-split-pane> -->

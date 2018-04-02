@@ -18,7 +18,8 @@ export class CentralBrainProvider {
     public http: Http,
   ) {
     console.log('Hello CentralBrainProvider Provider');
-    this.MOBILE_API_TEST = "http://localhost/optimus/frontend/web/mobile-api/";
+    this.MOBILE_API_TEST = "http://optimus-transport.ro/mobile-api/";
+    // this.MOBILE_API_TEST = "http://localhost/optimus/frontend/web/mobile-api/"
     this._headers = new Headers();
     this._headers.append('Content-Type', 'application/json');
   }
@@ -30,15 +31,17 @@ export class CentralBrainProvider {
     });
   }
 
-  getSpecificVoucher(id) {
-    let body = { voucher_id: id };
-    console.log
+  getSpecificVoucher(data) {
+    data.by
+    let by = data.by;
+    let value = data.value
+    let body = { by: by, value: value };
+    console.log(body)
     return new Promise(resolve => {
       this.http.post(this.MOBILE_API_TEST + 'get-specific-vouchers', body, { headers: this._headers })
         .map(res => res.json())
         .subscribe(data => {
           let response = data;
-          console.log(data);
           resolve(response);
         });
     });
@@ -51,6 +54,17 @@ export class CentralBrainProvider {
         .subscribe(data => {
           let response = data;
           console.log(data);
+          resolve(response);
+        });
+    });
+  }
+
+  getLastVouchers() {
+    return new Promise(resolve => {
+      this.http.get(this.MOBILE_API_TEST + 'get-last-vouchers', { headers: this._headers })
+        .map(res => res.json())
+        .subscribe(data => {
+          let response = data;
           resolve(response);
         });
     });

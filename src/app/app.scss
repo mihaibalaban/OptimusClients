@@ -14,3 +14,45 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.menuIonContent{
+.menuPages {
+    background-color: #9e0b0f;
+    color: white;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    border-bottom: solid 1px;
+    padding-bottom: 68px;
+}
+.item-md.item-block .item-inner {
+    padding-right: 8px;
+    // border-bottom: none;
+}
+}
+
+
+.item-md.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: none;
+    padding-top: 9px;
+}
+
+.toolbar-title-md {
+    padding: 0 12px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+}
+
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+    color: white;
+}
+
+.toolbar-background-md{
+    background-color: #9e0b0f;
+    color: white;
+}
+
+ion-nav  {
+    max-width: 100%;
+}
