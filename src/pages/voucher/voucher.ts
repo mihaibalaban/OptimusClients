@@ -41,9 +41,9 @@ export class VoucherPage {
 
     }
 
-    ionViewWillEnter(){
-        this.voucher = null;
-        this.vouchers = null;
+    ionViewWillEnter() {
+        // this.voucher = null;
+        // this.vouchers = null;
     }
 
     loadingCreator(message) {
@@ -57,7 +57,42 @@ export class VoucherPage {
     generateVoucher() {
         this.vouchers = [];
         this.loadingCreator("The voucher is in the oven!");
-        this.dataService.generateVoucher().then(data => {
+        const prompt = this.alertCtrl.create({
+            title: 'Login',
+            message: "Enter a name for this new album you're so keen on adding",
+            inputs: [
+                {
+                    name: 'number',
+                    placeholder: 'Numar'
+                },
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Save',
+                    handler: data => {
+                        if (data.number == "") {
+                            data.number = "1"
+                        }
+                        if (Number.isInteger(parseInt(data.number.match(/\d+/)[0])))
+                            this.voucherGenerator(parseInt(data.number.match(/\d+/)[0]));
+                    }
+                }
+            ]
+        });
+
+        prompt.present();
+        this.showVoucherSearchForm = false;
+
+    }
+
+    voucherGenerator(data) {
+        this.dataService.generateVoucher(data).then(data => {
             this.voucher = data;
             this.isUsed = false;
             if (this.voucher.error) {
@@ -65,8 +100,6 @@ export class VoucherPage {
             }
             this.loader.dismiss();
         })
-        this.showVoucherSearchForm = false;
-
     }
 
     voucherTapped(voucher) {

@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ToastController } from 'ionic-angular';
 import { CentralBrainProvider } from '../../providers/central-brain/central-brain';
+import { AlertController } from 'ionic-angular';
+
 @Component({
     selector: 'voucher-form',
     templateUrl: 'voucher-form.html'
@@ -16,7 +18,8 @@ export class VoucherFormPage {
         public navCtrl: NavController,
         public navParams: NavParams,
         private formBuilder: FormBuilder,
-        public dataService: CentralBrainProvider
+        public dataService: CentralBrainProvider,
+        public alertCtrl: AlertController,        
     ) {
         this.voucher = navParams.get('voucher');
 
@@ -35,6 +38,9 @@ export class VoucherFormPage {
             reference: [''],
             truck: [''],
             truck_length: [''],
+            total: [''],
+            goods: [''],
+            drivers: [''],
         });
 
         if (this.voucher.date != null) {
@@ -46,6 +52,9 @@ export class VoucherFormPage {
             this.voucherForm.controls['reference'].setValue(this.voucher.reference);
             this.voucherForm.controls['truck'].setValue(this.voucher.truck);
             this.voucherForm.controls['truck_length'].setValue(this.voucher.truck_length);
+            this.voucherForm.controls['total'].setValue(this.voucher.total);
+            this.voucherForm.controls['total'].setValue(this.voucher.goods);
+            this.voucherForm.controls['total'].setValue(this.voucher.drivers);
         }
     }
 
@@ -70,5 +79,82 @@ export class VoucherFormPage {
         });
         toast.present();
     }
+
+
+truck_length(){
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Lightsaber color');
+    
+    alert.addInput({
+        type: 'radio',
+        label: '7',
+        value: '7',
+      });
+      alert.addInput({
+        type: 'radio',
+        label: '9',
+        value: '9',
+      });
+      alert.addInput({
+        type: 'radio',
+        label: '10',
+        value: '10',
+      });
+      alert.addInput({
+        type: 'radio',
+        label: '12',
+        value: '12',
+      });
+      alert.addInput({
+        type: 'radio',
+        label: '17',
+        value: '17',
+      });
+      alert.addInput({
+        type: 'radio',
+        label: '18',
+        value: '18',
+      });
+      alert.addInput({
+        type: 'radio',
+        label: '19',
+        value: '19',
+      });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+        this.voucherForm.controls['truck_length'].setValue(data);
+      }
+    });
+    alert.present();
+  }
+
+    
+  route(){
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Lightsaber color');
+    
+    alert.addInput({
+        type: 'radio',
+        label: 'CA-DO',
+        value: 'CA-DO',
+      });
+      alert.addInput({
+        type: 'radio',
+        label: 'DO-CA',
+        value: 'DO-CA',
+      });
+    
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+        this.voucherForm.controls['route'].setValue(data);
+      }
+    });
+    alert.present();
+  }
 
 }

@@ -11,38 +11,53 @@
 
     <form [formGroup]="voucherForm" (ngSubmit)="submit()">
         <ion-item>
-            <ion-label floating>Pret</ion-label>
-            <ion-input type="text" formControlName="price"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Ruta</ion-label>
-            <ion-input type="text" formControlName="route"></ion-input>
-        </ion-item>
-        <ion-item>
             <ion-label floating>Data</ion-label>
             <ion-input type="date" formControlName="date"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>baf</ion-label>
-            <ion-input type="text" formControlName="baf"></ion-input>
+            <ion-label floating>truck</ion-label>
+            <ion-input type="text" formControlName="truck"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label floating>Invoice</ion-label>
-            <ion-input type="text" formControlName="invoice"></ion-input>
+        <ion-item (click)='truck_length()'>
+            <ion-label floating>truck_length</ion-label>
+            <ion-input type="text" formControlName="truck_length" [readonly]='true'></ion-input>
+        </ion-item>
+        <ion-item (click)='route()'>
+            <ion-label floating>Ruta</ion-label>
+            <ion-input type="text" formControlName="route" [readonly]='true'></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Reference</ion-label>
             <ion-input type="text" formControlName="reference"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>truck</ion-label>
-            <ion-input type="text" formControlName="truck"></ion-input>
+            <ion-label floating>Pret</ion-label>
+            <ion-input type="text" formControlName="price"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>truck_length</ion-label>
-            <ion-input type="text" formControlName="truck_length"></ion-input>
+            <ion-label floating>baf</ion-label>
+            <ion-input type="text" formControlName="baf"></ion-input>
         </ion-item>
-        
+        <ion-item>
+            <ion-label floating>Total</ion-label>
+            <ion-input type="text" formControlName="total"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Invoice</ion-label>
+            <ion-input type="text" formControlName="invoice"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Goods</ion-label>
+            <ion-input type="text" formControlName="goods"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Drivers</ion-label>
+            <ion-input type="text" formControlName="drivers"></ion-input>
+        </ion-item>
+
+
+
+
         <button *ngIf="isUsed == true" ion-button color="primary" type="submit" block>Update Voucher</button>
         <button *ngIf="isUsed == false" ion-button color="secondary" type="submit" block>Atribuie voucher</button>
 

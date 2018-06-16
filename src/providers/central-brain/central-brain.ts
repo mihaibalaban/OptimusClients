@@ -70,9 +70,10 @@ export class CentralBrainProvider {
     });
   }
 
-  generateVoucher() {
+  generateVoucher(data) {
+    let body = {limit: data};
     return new Promise(resolve => {
-      this.http.get(this.MOBILE_API_TEST + 'generate-voucher', { headers: this._headers })
+      this.http.post(this.MOBILE_API_TEST + 'generate-voucher', body ,{ headers: this._headers })
         .map(res => res.json())
         .subscribe(data => {
           let response = data;
